@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arinc429-completo"
+version = "0.1.0"
+description = "Aplicacion de escritorio para analisis y simulacion ARINC 429"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "PySide6>=6.6,<7",
+    "pyserial>=3.5,<4",
+    "numpy>=1.26,<3",
+    "sounddevice>=0.4.6,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+arinc429 = "arinc429.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
